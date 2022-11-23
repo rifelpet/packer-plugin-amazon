@@ -21,6 +21,7 @@ type StepAMIRegionCopy struct {
 	EncryptBootVolume config.Trilean // nil means preserve
 	Name              string
 	OriginalRegion    string
+	CopyTags          bool
 
 	toDelete           string
 	getRegionConn      func(*AccessConfig, string) (ec2iface.EC2API, error)
@@ -208,6 +209,7 @@ func (s *StepAMIRegionCopy) amiRegionCopy(ctx context.Context, state multistep.S
 		Name:          &name,
 		Encrypted:     encrypt,
 		KmsKeyId:      aws.String(keyId),
+		CopyImageTags: &s.CopyTags,
 	})
 
 	if err != nil {

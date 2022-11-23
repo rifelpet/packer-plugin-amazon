@@ -511,6 +511,7 @@ func (b *Builder) Run(ctx context.Context, ui packersdk.Ui, hook packersdk.Hook)
 			EncryptBootVolume: b.config.AMIEncryptBootVolume,
 			Name:              b.config.AMIName,
 			OriginalRegion:    *ec2conn.Config.Region,
+			CopyTags:          b.config.AMICopyTags,
 		},
 		&awscommon.StepModifyAMIAttributes{
 			Description:    b.config.AMIDescription,

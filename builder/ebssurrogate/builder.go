@@ -431,6 +431,7 @@ func (b *Builder) Run(ctx context.Context, ui packersdk.Ui, hook packersdk.Hook)
 			Name:               b.config.AMIName,
 			OriginalRegion:     *ec2conn.Config.Region,
 			AMISkipBuildRegion: b.config.AMISkipBuildRegion,
+			CopyTags:           b.config.AMICopyTags,
 		},
 		&awscommon.StepModifyAMIAttributes{
 			Description:    b.config.AMIDescription,
