@@ -48,6 +48,9 @@
   [`dynamic_block`](/packer/docs/templates/hcl_templates/expressions#dynamic-blocks)
   will allow you to create those programatically.
 
+- `ami_copy_tags` (bool) - Set to true if you want user-defined tags to be included
+  when copying the AMI.
+
 - `ena_support` (boolean) - Enable enhanced networking (ENA but not SriovNetSupport) on
   HVM-compatible AMIs. If set, add `ec2:ModifyInstanceAttribute` to your
   AWS IAM policy.

@@ -185,6 +185,7 @@ type FlatConfig struct {
 	AMISkipRegionValidation                   *bool                                  `mapstructure:"skip_region_validation" required:"false" cty:"skip_region_validation" hcl:"skip_region_validation"`
 	AMITags                                   map[string]string                      `mapstructure:"tags" required:"false" cty:"tags" hcl:"tags"`
 	AMITag                                    []config.FlatKeyValue                  `mapstructure:"tag" required:"false" cty:"tag" hcl:"tag"`
+	AMICopyTags                               *bool                                  `mapstructure:"ami_copy_tags" required:"false" cty:"ami_copy_tags" hcl:"ami_copy_tags"`
 	AMIENASupport                             *bool                                  `mapstructure:"ena_support" required:"false" cty:"ena_support" hcl:"ena_support"`
 	AMISriovNetSupport                        *bool                                  `mapstructure:"sriov_support" required:"false" cty:"sriov_support" hcl:"sriov_support"`
 	AMIForceDeregister                        *bool                                  `mapstructure:"force_deregister" required:"false" cty:"force_deregister" hcl:"force_deregister"`
@@ -346,6 +347,7 @@ func (*FlatConfig) HCL2Spec() map[string]hcldec.Spec {
 		"skip_region_validation":       &hcldec.AttrSpec{Name: "skip_region_validation", Type: cty.Bool, Required: false},
 		"tags":                         &hcldec.AttrSpec{Name: "tags", Type: cty.Map(cty.String), Required: false},
 		"tag":                          &hcldec.BlockListSpec{TypeName: "tag", Nested: hcldec.ObjectSpec((*config.FlatKeyValue)(nil).HCL2Spec())},
+		"ami_copy_tags":                &hcldec.AttrSpec{Name: "ami_copy_tags", Type: cty.Bool, Required: false},
 		"ena_support":                  &hcldec.AttrSpec{Name: "ena_support", Type: cty.Bool, Required: false},
 		"sriov_support":                &hcldec.AttrSpec{Name: "sriov_support", Type: cty.Bool, Required: false},
 		"force_deregister":             &hcldec.AttrSpec{Name: "force_deregister", Type: cty.Bool, Required: false},
